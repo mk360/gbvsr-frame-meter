@@ -47,6 +47,12 @@ bool just_pressed(int32_t key)
 	return pressed_keys[key] && !was_pressed;
 }
 
+bool was_held(int32_t key)
+{
+	pressed_keys[key] = GetAsyncKeyState(key) & 0x8000;
+	return pressed_keys[key];
+}
+
 bool is_training_mode()
 {
 	UREDGameCommon *game_instance = get_game_instance();
